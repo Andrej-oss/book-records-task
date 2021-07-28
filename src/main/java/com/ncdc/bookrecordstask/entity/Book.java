@@ -1,5 +1,6 @@
 package com.ncdc.bookrecordstask.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,7 @@ public class Book {
     private String title;
     private String ISBN;
     @Lob
+    @JsonIgnore
     private byte[] data;
 
 }
