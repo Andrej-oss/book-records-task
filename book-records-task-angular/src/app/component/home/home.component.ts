@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {BookDaoService} from "../../service/BookDao/book-dao.service";
-import {Book} from "../../models/Book";
+import {Book, BookImpl} from "../../models/Book";
 
 @Component({
   selector: 'app-home',

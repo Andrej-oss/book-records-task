@@ -17,7 +17,8 @@ export class BookDaoService {
   getOneBook(id: number): Observable<Book>{
     return this.httpClient.get<Book>(this.urlBook + `/${id}`);
   }
-  saveBook(book: FormData, append: void): Observable<Book>{
+
+    saveBook(book: FormData, append: void): Observable<Book>{
     return this.httpClient.post<Book>(this.urlBook, book)
   }
 

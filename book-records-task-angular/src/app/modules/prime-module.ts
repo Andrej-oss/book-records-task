@@ -12,6 +12,7 @@ import {ToastModule} from "primeng/toast";
 import {InputTextModule} from "primeng/inputtext";
 import {ProgressBarModule} from "primeng/progressbar";
 import {CardModule} from "primeng/card";
+import {FileUploadModule} from "primeng/fileupload";
 
 @NgModule({
     exports: [
@@ -21,6 +22,7 @@ import {CardModule} from "primeng/card";
         SliderModule,
         DialogModule,
         MultiSelectModule,
+        FileUploadModule,
         ContextMenuModule,
         DropdownModule,
         ButtonModule,
