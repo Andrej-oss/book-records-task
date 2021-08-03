@@ -3,6 +3,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Book, BookImpl} from "../../models/Book";
 import {BookDaoService} from "../../service/BookDao/book-dao.service";
 import {Router} from "@angular/router";
+import {catchError} from "rxjs/operators";
+import {ErrorImpl} from "../../models/Error";
 
 @Component({
   selector: 'app-form',
@@ -17,6 +19,7 @@ export class FormComponent implements OnInit {
   isbn: FormControl;
   image: File = new File([new Blob()], 'file');
   formData: FormData = new FormData();
+  error: ErrorImpl = new ErrorImpl();
 
   constructor(private bookDaoService: BookDaoService, private router: Router) {
     this.formBook = new FormGroup({
@@ -36,8 +39,11 @@ export class FormComponent implements OnInit {
     this.bookDaoService.saveBook(this.formData, this.formData.append('image', this.image)).subscribe(book =>
     {
       this.book = book;
-    });
-    this.resetForm();
+      this.resetForm();
+    },
+        (e: any) => {
+          this.error = e.error
+        });
   }
 
   myUploader(file: any) {

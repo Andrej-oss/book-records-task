@@ -2,6 +2,7 @@ package com.ncdc.bookrecordstask.service.impl;
 
 import com.ncdc.bookrecordstask.dao.BookDAO;
 import com.ncdc.bookrecordstask.entity.Book;
+import com.ncdc.bookrecordstask.exception.LetterAException;
 import com.ncdc.bookrecordstask.service.IBookService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,8 @@ public class BookService implements IBookService {
     @Override
     public Book saveBookRecord(Book book, MultipartFile image) {
         if (book != null){
+
+            if (!book.getAuthor().startsWith("A")) throw new LetterAException("Please enter a valid value for author name, should start with \"A\"");
             if (image != null){
                 try {
                     book.setData(image.getBytes());
