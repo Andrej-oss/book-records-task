@@ -40,9 +40,11 @@ export class FormComponent implements OnInit {
     {
       this.book = book;
       this.resetForm();
+      this.router.navigate(['/home']);
     },
         (e: any) => {
-          this.error = e.error
+          this.error = e.error;
+          this.resetForm();
         });
   }
 
@@ -55,6 +57,5 @@ export class FormComponent implements OnInit {
     this.formData.delete('author');
     this.formData.delete('ISBN');
     this.formData.delete('image');
-    this.router.navigate(['/home']);
   }
 }

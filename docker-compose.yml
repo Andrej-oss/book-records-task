@@ -1,49 +1,48 @@
-dockerversion: "3.7"
-
+version: "3.7"
 services:
   app:
     build:
       context: .
-    container_name: pizza-shop-backend
+    container_name: book-shop-backend
     volumes:
       - ./target:/app
     restart: on-failure
     command: ["java", "-jar", "book-records-task-0.0.1-SNAPSHOT.jar"]
-    depends_on:
-      - db
+#    depends_on:
+#      - db
     ports:
       - "8080:8080"
     networks:
-      - pizzaShopNetwork
-  db:
-    image: mysql
-    container_name: pizza-database
-    environment:
-      MYSQL_ROOT_PASSWORD: admin
-      MYSQL_DATABASE: book
-      MYSQL_USER: user
-      MYSQL_PASSWORD: user
-    restart: on-failure
-    ports:
-      - "3306:3306"
-    networks:
-      - pizzaShopNetwork
-#  web:
-#    build:
-#      context: ./PizzaShopAngular
-#      dockerfile: Dockerfile.prod
+      - bookNetwork
+#  db:
+#    image: mysql
+#    container_name: book-database
+#    environment:
+#      MYSQL_ROOT_PASSWORD: admin
+#      MYSQL_DATABASE: book
+#      MYSQL_USER: user
+#      MYSQL_PASSWORD: user
 #    restart: on-failure
-#    depends_on:
-#      #      - db
-#      - app
-#    container_name: pizza-shop-frontend
-#    volumes:
-#      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
-#      - ./PizzaShopAngular/dist/pizza-shop:/usr/share/nginx/html
 #    ports:
-#      - "80:80"
+#      - "3306:3306"
 #    networks:
-#      - pizzaShopNetwork
+#      - bookNetwork
+  web:
+    build:
+      context: ./book-records-task-angular
+      dockerfile: Dockerfile
+    restart: on-failure
+    depends_on:
+#      - db
+      - app
+    container_name: book-shop-frontend
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./book-records-task-angular/dist/book:/usr/share/nginx/html
+    ports:
+      - "80:80"
+    networks:
+      - bookNetwork
 networks:
-  pizzaShopNetwork:
+  bookNetwork:
     driver: bridge

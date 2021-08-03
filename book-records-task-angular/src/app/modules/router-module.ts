@@ -4,6 +4,6 @@ import {FormComponent} from "../component/form/form.component";
 import {AppComponent} from "../component/app-page/app.component";
 
 export const routes: Routes = [
-    {path: 'home', component: HomeComponent},
+    {path: 'book', component: HomeComponent},
     {path: 'form', component: FormComponent}
 ];
