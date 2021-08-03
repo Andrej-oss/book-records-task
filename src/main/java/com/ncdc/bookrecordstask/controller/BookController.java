@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @Slf4j
+@CrossOrigin("http://localhost:4200")
 public class BookController {
 
     private IBookService bookService;
@@ -44,7 +45,7 @@ public class BookController {
         log.info("Handling /put book with id " + id + "and body " + book + "and image " + image.getOriginalFilename());
         return bookService.updateBookRecord(id, book, image);
     }
-    @DeleteMapping("/book")
+    @DeleteMapping("/book/{id}")
     public void deleteBook(@PathVariable int id){
         log.info("Handling /delete book by id " + id);
         bookService.deleteBookRecord(id);

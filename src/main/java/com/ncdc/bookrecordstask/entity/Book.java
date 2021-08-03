@@ -18,7 +18,7 @@ public class Book {
     private int id;
     private String author;
     private String title;
-    private String ISBN;
+    private Long ISBN;
     @Lob
     @JsonIgnore
     private byte[] data;

@@ -1,0 +1,10 @@
+<div *ngIf="!!book">
+    <p-card [header]="book.title" [subheader]="book.author" [style]="{width: '260px'}" styleClass="p-card-shadow">
+        <ng-template pTemplate="header">
+            <img alt="Card" [src]="bookUrl + '/image/' + book.id">
+        </ng-template>
+        <ng-template pTemplate="footer">
+            <p>{{book.ISBN}}</p>
+        </ng-template>
+    </p-card>
+</div>

@@ -1,0 +1,8 @@
+<div *ngIf="!books.length">
+    <h1>No records</h1>
+</div>
+<div *ngIf="!!books.length" class="book-page-content">
+    <div *ngFor="let book of books" class="book-page-content-item">
+        <app-book-card [book]="book"></app-book-card>
+    </div>
+</div>
