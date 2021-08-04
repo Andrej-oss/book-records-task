@@ -23,8 +23,8 @@ public class BookController {
     }
     //end point get by url / root front-end app
     @GetMapping("/")
-    public String init(){
-        return "index";
+    public String home(){
+        return "forward:index.html";
     }
     //end point get by url /book to get all books
     @GetMapping(value = "/book")
