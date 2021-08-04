@@ -21,11 +21,7 @@ public class BookController {
     public BookController(IBookService bookService) {
         this.bookService = bookService;
     }
-    //end point get by url / root front-end app
-    @GetMapping("/")
-    public String home(){
-        return "forward:index.html";
-    }
+
     //end point get by url /book to get all books
     @GetMapping(value = "/book")
     public List<Book> getAllBooks(){
